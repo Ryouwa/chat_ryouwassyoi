@@ -7,4 +7,6 @@ urlpatterns = [
     path('index.html', RedirectView.as_view(url='/board/')),
     path('board/', include('board.urls')),
     path('admin/', admin.site.urls),
+    path('account/', include('django.contrib.auth.urls')),
+    path('account/', include('account.urls')),
 ]
