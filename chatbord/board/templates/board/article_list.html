@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
-    
+
+{% load markdown_extras %}
+
 {% block content %}
 
     <h1 class="mt-3 mb-4">投稿一覧</h1>
@@ -16,7 +18,7 @@
                 作成日時：{{ article.created_at|date:"Y-m-j H:i" }}<br>
                 更新日時：{{ article.updated_at|date:"Y-m-j H:i" }}
             </td>
-            <td>{{ article.content }}</td>
+            <td>{{ article.content|markdown|safe }}</td>
         </tr>
         {% endfor %}
     </table>
@@ -26,5 +28,5 @@
         <a href='{% url "board:create" %}'  class='btn btn-outline-primary'>新規投稿</a>
     </p>
     {% endif %}
-    
+
 {% endblock %}
